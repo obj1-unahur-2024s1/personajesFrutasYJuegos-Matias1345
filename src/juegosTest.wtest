@@ -1,0 +1,42 @@
+import juegos.*
+import personajes.*
+import dia.*
+//En todos estos tests, la energía inicial de Martin es 100
+
+test "Martin practica 10 minutos de Voley" {
+	voley.setCantidadDeMinutos(10)
+	martin.practicar(voley)
+	assert.equals(80,martin.getEnergiaActual())
+	assert.that(martin.tieneHambre())
+}
+
+//Por defecto practicar Futbol solo resta 10 de energia
+test "Martin practica Futbol" {
+	martin.practicar(futbol)
+	assert.equals(90,martin.getEnergiaActual())
+	assert.that(martin.tieneHambre())
+}
+
+test "Martin practica Futbol, pero ahora resta una energia seteada" {
+	futbol.setEnergiaGastadaPorFutbol(30)
+	martin.practicar(futbol)
+	assert.equals(70,martin.getEnergiaActual())
+	assert.that(martin.tieneHambre())
+}
+
+test "Martin practica aerobic, con una temperatura seteada" {
+	dia.cambiarTemperaturaA(28)
+	martin.practicar(aerobic)
+	assert.equals(114,martin.getEnergiaActual())
+	assert.that(martin.tieneHambre())
+}
+
+test "Martin practica basquet" {
+	martin.practicar(basquet)
+	assert.equals(50,martin.getEnergiaActual())
+	assert.that(martin.tieneHambre())
+}
+
+
+
+

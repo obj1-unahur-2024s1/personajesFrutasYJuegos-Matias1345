@@ -1,0 +1,49 @@
+import frutas.*
+import personajes.*
+import colores.*
+
+//Por defecto la manzana es verde y Martin tiene 100 de energia
+test "Una manzana verde es comida por Martin" {
+	manzana.serConsumido()
+	assert.equals(107,martin.getEnergiaActual())
+}
+
+test "Una manzana roja es comida por Martin" {
+	manzana.madurar()
+	manzana.serConsumido()
+	assert.equals(114,martin.getEnergiaActual())
+}
+
+test "Una manzana amarilla es comida por Martin" {
+	manzana.cambiarColor(amarillo)
+	manzana.serConsumido()
+	assert.equals(105,martin.getEnergiaActual())
+}
+
+//Por defecto la mandarina es de 60 gramos 
+test "Una mandarina es comida por Martin" {
+	mandarina.serConsumido()
+	assert.equals(112,martin.getEnergiaActual())
+}
+
+test "Una banana es comida por Martin" {
+	banana.serConsumido()
+	assert.equals(105,martin.getEnergiaActual())
+}
+
+//Por defecto Martin no tiene hambre
+test "Un vaso de agua es consumido por Martin" {
+	martin.darHambre()
+	agua.serConsumido()
+	assert.notThat(martin.tieneHambre())
+	assert.equals(100,martin.getEnergiaActual())
+}
+
+
+
+
+
+
+
+
+

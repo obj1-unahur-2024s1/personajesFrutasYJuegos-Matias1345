@@ -1,0 +1,60 @@
+import personajes.*
+import colores.*
+import frutas.*
+import equipo.*
+
+//Inicialmente la mandarina pesa 60 gramos
+test "Martin se va a dormir" {
+	martin.irseADormir()
+	assert.equals(150,martin.getEnergiaActual())
+	assert.equals(rojo,manzana.getColor())
+	assert.equals(54,mandarina.getGramos())
+}
+
+test "Asignar personas a los puestos del equipo" {
+	equipo.asignar(maria,pepe,yo)
+	assert.equals(maria,equipo.getIzquierdo())
+	assert.equals(pepe,equipo.getDerecho())
+	assert.equals(yo,equipo.getTecnico())
+}
+
+test "Rotacion de posiciones del equipo" {
+	equipo.asignar(maria,pepe,yo)
+	equipo.rotarPosiciones()
+	assert.equals(pepe,equipo.getIzquierdo())
+	assert.equals(maria,equipo.getDerecho())
+	assert.equals(yo,equipo.getTecnico())
+}
+
+test "Incorporacion exitosa de un nuevo tecnico al equipo" {
+	equipo.asignar(maria,pepe,yo)
+	equipo.incorporarNuevoTecnico(martin)
+	assert.equals(martin,equipo.getTecnico())
+}
+
+test "Incorporacion fallida de un nuevo tecnico al equipo" {
+	equipo.asignar(maria,pepe,martin)
+	equipo.incorporarNuevoTecnico(yo)
+	assert.equals(martin,equipo.getTecnico())
+}
+
+test "Energia promedio del equipo" {
+	equipo.asignar(maria,pepe,yo)
+	assert.equals(107,equipo.energiaPromedio())
+}
+
+//Inicialmente, en mi implementacion, yo no estoy feliz hasta que me vaya a dormir
+test "El equipo esta feliz" {
+	equipo.asignar(maria,pepe,yo)
+	yo.irseADormir()
+	assert.that(equipo.estanTodosFelices())
+}
+
+test "El equipo no esta feliz" {
+	equipo.asignar(maria,pepe,yo)
+	assert.notThat(equipo.estanTodosFelices())
+}
+
+
+
+
